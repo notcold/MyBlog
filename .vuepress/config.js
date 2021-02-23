@@ -2,6 +2,13 @@ module.exports = {
   "title": "my blog",
   "description": "write something",
   "dest": "public",
+  "configureWebpack": {
+    "resolve": {
+      "alias": {
+        '@static': 'static/'
+      }
+    }
+  },
   "head": [
     [
       "link",

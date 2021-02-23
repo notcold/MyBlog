@@ -8,7 +8,7 @@ categories:
 tags: 
  - es7
 
-image: assets/images/5.jpg
+image: static/images/5.jpg
 
 ---
 
@@ -105,4 +105,4 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
  
  注意！如果await后面可能返回reject那么最好做好 `try...catch`,否则会影响代码的同步执行
  
- ![图片]({{site.url}}/assets/images/es7/async__rejected.png)
+ ![图片](../../static/images/es7/async__rejected.png)

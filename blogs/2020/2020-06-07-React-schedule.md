@@ -2,23 +2,21 @@
 layout: post
 title: React Schedul 源码学习
 description: 学习了解React中任务如何安排调度执行
-categories: [ React]
-tags: [ 源码 ]
-image: assets/images/react/schedule.png
+categories: [框架]
+tags: [React]
+image: static/images/react/schedule.png
 date: 2020-12-15
-
 ---
 
+## React Schedule
 
-# React Schedul
+### React 的 schedule 原理
 
+画了一个大概的图简单描述一个任务进入调度到他执行的过程。
 
-  React 的schedule原理
-  花了一个大概的图简单描述一个任务进入调度到他执行的过程。
+调度![图片](../../static/images/react/schedule.png)
 
-  调度![图片]({{site.url}}/assets/images/react/schedule.png)
-
-  下面是代码的流转过程
+下面是代码的流转过程
 
 ```js
 
@@ -26,12 +24,12 @@ date: 2020-12-15
 // scheduleCallback
 
 // 首先任务进入该方法进行分配，进行时间计算后判断是否需要延后执行
-//  需要则先把任务加入到一个时间等待队列中 ，如果任务的开始执行时间最早，则重新设置定时 `startTime - currentTime`ms 后执行 
+//  需要则先把任务加入到一个时间等待队列中 ，如果任务的开始执行时间最早，则重新设置定时 `startTime - currentTime`ms 后执行
 //  不需要则加入任务执行队列，如果队列为空则立即开始执行
 function unstable_scheduleCallback(priorityLevel, callback, options) {
   // 获取当前时间
   var currentTime = getCurrentTime();
-  
+
   var startTime;
   var timeout;
   // 计算任务的开始时间和一个延迟的时间
@@ -93,7 +91,7 @@ function unstable_scheduleCallback(priorityLevel, callback, options) {
 
   return newTask;
 }
-        
+
 
 
 
@@ -141,7 +139,7 @@ function handleTimeout(currentTime) {
       requestHostCallback(flushWork);
     } else {
       const firstTimer = peek(timerQueue);
-      if (firstTimer !== null) 
+      if (firstTimer !== null)
         // 取时间队列中的最早的任务定时启动
         requestHostTimeout(handleTimeout, firstTimer.startTime - currentTime);
       }
@@ -255,4 +253,4 @@ function workLoop(hasTimeRemaining, initialTime) {
 
 ```
 
-  上面是Schedule 大致的代码流程，通过 `setTimeout` 或者 `MessageChannel` 实现任务的异步执行。Schedule模块已经被从React代码中单独抽成一个功能，可以脱离React单独使用，在某些适用的需求中可以引入使用。
+上面是 Schedule 大致的代码流程，通过 `setTimeout` 或者 `MessageChannel` 实现任务的异步执行。Schedule 模块已经被从 React 代码中单独抽成一个功能，可以脱离 React 单独使用，在某些适用的需求中可以引入使用。

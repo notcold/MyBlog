@@ -6,7 +6,7 @@ categories:
  - engineering
 tags: 
  - eslint
-image: assets/images/5.jpg
+image: static/images/5.jpg
 date: 2016-02-15
 
 ---

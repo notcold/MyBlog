@@ -8,7 +8,7 @@ categories:
 tags: 
  - node
  - psdjs
-image: assets/images/5.jpg
+image: static/images/5.jpg
 
 ---
 

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: React学习
-image: assets/images/5.jpg
+image: static/images/5.jpg
 date: 2018-12-15
 
 
